@@ -63,8 +63,7 @@ export class BacklinksProvider implements vscode.TreeDataProvider<backlink>{
             backlinks.map((link) =>
                 new backlink(
                     link,
-                    vscode.Uri.file(path.join(this.rootDir, link)),
-                    "Line number goes here"
+                    vscode.Uri.file(path.join(this.rootDir, link))
                 )
             )
         );
@@ -101,17 +100,13 @@ export class BacklinksProvider implements vscode.TreeDataProvider<backlink>{
 class backlink extends vscode.TreeItem {
     constructor(
       public readonly label: string,
-      private uri: vscode.Uri,
-      private lineNumber: string
+      private uri: vscode.Uri
     ) {
         super(label)
     }
 
     get tooltip(): string {
         return "Click to open"
-    }
-    get description(): string {
-        return this.lineNumber;
     }
 
     get command(): vscode.Command {
