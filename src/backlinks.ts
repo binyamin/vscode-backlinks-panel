@@ -2,8 +2,8 @@ import * as vscode from 'vscode';
 import * as fs from "fs";
 import * as path from "path";
 
-export class Provider implements vscode.TreeDataProvider<backlink>{
-    constructor(private rootDir: string) { }
+export class BacklinksProvider implements vscode.TreeDataProvider<backlink>{
+    constructor() { }
     
     private _onDidChangeTreeData: vscode.EventEmitter<backlink | undefined | null> = new vscode.EventEmitter<backlink | undefined | null>();
     readonly onDidChangeTreeData: vscode.Event<backlink | undefined | null> = this._onDidChangeTreeData.event;
@@ -12,12 +12,22 @@ export class Provider implements vscode.TreeDataProvider<backlink>{
       this._onDidChangeTreeData.fire(null);
     }
 
+    private get rootDir() {
+        if(vscode.window.activeTextEditor) {
+            return vscode.window.activeTextEditor.document.uri.path;
+        } else if(vscode.workspace.workspaceFolders) {
+            return vscode.workspace.workspaceFolders[0].uri.path;
+        } else {
+            return "";
+        }
+    }
+
     getTreeItem(element: backlink): vscode.TreeItem {
         return element;
     }
 
     getChildren(element?: backlink): Thenable<backlink[]> {
-        if(!this.rootDir) {
+        if(this.rootDir === "") {
             vscode.window.showInformationMessage("No documents found");
             return Promise.resolve([]);
         }
@@ -34,11 +44,9 @@ export class Provider implements vscode.TreeDataProvider<backlink>{
             4. Display relevant Filenames
         */
         const currentFilename = this.getCurrentFilename();
-        if(!currentFilename) {
-            // Handle "no open file"
-            throw "No open file";
-        }
-        const mdFiles = this.getAllDocs(this.rootDir).filter(fn => fn.endsWith(".md"));
+        if(!currentFilename) return Promise.resolve([]);
+
+        const mdFiles:string[] = this.getAllDocs(this.rootDir).filter(fn => fn.endsWith(".md"));
         
         let backlinks: string[] = [];
 
@@ -56,7 +64,7 @@ export class Provider implements vscode.TreeDataProvider<backlink>{
                 new backlink(
                     link,
                     vscode.Uri.file(path.join(this.rootDir, link)),
-                    "hi"
+                    "Line number goes here"
                 )
             )
         );

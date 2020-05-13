@@ -1,9 +1,9 @@
 import * as vscode from 'vscode';
-import {Provider} from './backlinks';
+import {BacklinksProvider} from './backlinks';
 
 
 export function activate(context: vscode.ExtensionContext) {
-    const provider = new Provider((vscode.workspace.workspaceFolders || [])[0].uri.path);
+    const provider = new BacklinksProvider();
 
     vscode.window.registerTreeDataProvider('backlinks', provider);
 
@@ -11,5 +11,7 @@ export function activate(context: vscode.ExtensionContext) {
         provider.refresh()
     );
 
-    vscode.window.onDidChangeVisibleTextEditors(() => provider.refresh())
+    vscode.window.onDidChangeVisibleTextEditors(() =>
+        provider.refresh()
+    );
 }
