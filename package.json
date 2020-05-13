@@ -1,29 +1,30 @@
 {
-  "name": "backlinks",
-  "displayName": "Display Backlinks",
-  "version": "1.0.0",
+  "name": "vscode-backlinks-panel",
+  "displayName": "Backlinks Panel",
+  "version": "0.1.0",
   "description": "",
   "main": "./out/extension.js",
   "publisher": "Binyamin Green",
   "categories": [
 		"Other"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/b3u/vscode-backlinks-panel.git"
+  },
   "activationEvents": ["onView:backlinks"],
   "contributes": {
     "commands": [
       {
         "command": "backlinks.refresh",
         "title": "Refresh",
-        "icon": {
-          "light": "resources/light/bx-refresh.svg",
-          "dark": "resources/dark/bx-refresh.svg"
-        }
+        "icon": "$(refresh)"
       }
     ],
     "viewsWelcome": [
       {
         "view": "backlinks",
-        "contents": "No Backlinks found."
+        "contents": "No Backlinks found. [Learn more](https://github.com/b3u/vscode-backlinks-panel/#faq)."
       }
     ],
     "menus": {
@@ -55,9 +56,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . --ext .ts"
   },
-  "keywords": [],
+  "keywords": [
+    "notes",
+    "wiki links",
+    "markdown",
+    "backlinks",
+    "references"
+  ],
   "author": "Binyamin Aron Green",
-  "license": "MIT",
+  "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
     "@types/node": "^13.13.5",
     "@types/vscode": "^1.45.0",

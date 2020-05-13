@@ -14,7 +14,7 @@ export class BacklinksProvider implements vscode.TreeDataProvider<backlink>{
 
     private get rootDir() {
         if(vscode.window.activeTextEditor) {
-            return vscode.window.activeTextEditor.document.uri.path;
+            return path.parse(vscode.window.activeTextEditor.document.uri.path).dir;
         } else if(vscode.workspace.workspaceFolders) {
             return vscode.workspace.workspaceFolders[0].uri.path;
         } else {
@@ -109,11 +109,12 @@ class backlink extends vscode.TreeItem {
         return "Click to open"
     }
 
+
     get command(): vscode.Command {
         return {
-            "command": "vscode.open",
-            "arguments": [this.uri],
-            "title": "Open File",
+            command: "vscode.open",
+            arguments: [this.uri],
+            title: "Open File",
         }
     }
 }
