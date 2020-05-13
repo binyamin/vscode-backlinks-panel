@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import * as vscode from 'vscode';
 import {BacklinksProvider} from './backlinks';
 
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: vscode.ExtensionContext): void {
     const provider = new BacklinksProvider();
 
     vscode.window.registerTreeDataProvider('backlinks', provider);

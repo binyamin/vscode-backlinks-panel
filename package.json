@@ -1,18 +1,24 @@
 {
-  "name": "vscode-backlinks-panel",
+  "name": "backlinks-panel",
   "displayName": "Backlinks Panel",
   "version": "0.1.0",
-  "description": "",
+  "description": "View all backlinks for the current file.",
   "main": "./out/extension.js",
-  "publisher": "Binyamin Green",
+  "publisher": "BinyaminGreen",
   "categories": [
-		"Other"
+    "Other"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/b3u/vscode-backlinks-panel.git"
   },
-  "activationEvents": ["onView:backlinks"],
+  "homepage": "https://github.com/b3u/vscode-backlinks-panel/blob/master/README.md",
+  "bugs": {
+    "url": "https://github.com/b3u/vscode-backlinks-panel/issues"
+  },
+  "activationEvents": [
+    "onView:backlinks"
+  ],
   "contributes": {
     "commands": [
       {
@@ -24,7 +30,7 @@
     "viewsWelcome": [
       {
         "view": "backlinks",
-        "contents": "No Backlinks found. [Learn more](https://github.com/b3u/vscode-backlinks-panel/#faq)."
+        "contents": "No Backlinks found."
       }
     ],
     "menus": {
@@ -46,8 +52,8 @@
     }
   },
   "engines": {
-		"vscode": "^1.34.0"
-	},
+    "vscode": "^1.34.0"
+  },
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
@@ -63,14 +69,17 @@
     "backlinks",
     "references"
   ],
-  "author": "Binyamin Aron Green",
+  "author": {
+    "name": "Binyamin Aron Green"
+  },
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
-    "@types/node": "^13.13.5",
+    "@types/node": "^14.0.1",
     "@types/vscode": "^1.45.0",
-    "@typescript-eslint/eslint-plugin": "^2.32.0",
-    "@typescript-eslint/parser": "^2.32.0",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
     "eslint": "^7.0.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.9.2",
+    "vscode-test": "^1.3.0"
   }
 }
