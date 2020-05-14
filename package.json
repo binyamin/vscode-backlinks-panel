@@ -4,7 +4,12 @@
   "version": "0.1.0",
   "description": "View all backlinks for the current file.",
   "main": "./out/extension.js",
+  "icon": "./resources/logo@1x.png",
   "publisher": "BinyaminGreen",
+  "galleryBanner": {
+    "color": "#88D6F6",
+    "theme": "dark"
+  },
   "categories": [
     "Other"
   ],
@@ -52,7 +57,7 @@
     }
   },
   "engines": {
-    "vscode": "^1.34.0"
+    "vscode": "^1.45.0"
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
