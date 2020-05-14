@@ -1,5 +1,5 @@
 # VS Code Backlinks Panel
-<img src="./resources/logo@2x.png" width="128" />
+<img src="https://github.com/b3u/vscode-backlinks-panel/blob/master/resources/logo@2x.png" width="128" />
 
 View all backlinks ([what?](https://github.com/b3u/vscode-backlinks-panel/#faq)) in the current file.
 
