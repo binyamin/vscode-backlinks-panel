@@ -2,7 +2,7 @@
 name: "\U0001F381 Feature request"
 about: Suggest an idea for this project
 title: ''
-labels: enhancement
+labels: feature
 assignees: ''
 
 ---
@@ -22,4 +22,4 @@ Include as many details about the environment which you think are relevant.
 * Version used:
 * VS Code version:
 * Operating System and version:
-* Screenshots, etc.
+* Screenshots, mockups, etc.

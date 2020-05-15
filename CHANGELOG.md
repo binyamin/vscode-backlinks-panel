@@ -23,6 +23,9 @@ This file should contain all notable changes to the project. The format was insp
 - create dedicate folder for testing the extension
 - Introduce changelog
 
+## Fixed
+- Fix bug where panel wouldn't update for side-by-side editors. (417419b55a45aed4936198f2b5496c97e91db0e9)
+
 ## [0.1.0] - 2020-05-13
 ### Added
 - List backlinks in side-panel
