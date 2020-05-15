@@ -50,11 +50,6 @@ export class BacklinksProvider implements vscode.TreeDataProvider<Backlink>{
             vscode.window.showInformationMessage("No documents found");
             return Promise.resolve([]);
         }
-        
-        (async (): Promise<void> => {
-            const cmd = await vscode.commands.getCommands();
-            cmd.forEach(c => console.log(c))
-        })();
 
         /*
             Steps

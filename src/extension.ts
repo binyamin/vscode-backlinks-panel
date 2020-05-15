@@ -12,7 +12,7 @@ export function activate(context: vscode.ExtensionContext): void {
         provider.refresh()
     );
 
-    vscode.window.onDidChangeVisibleTextEditors(() =>
+    vscode.window.onDidChangeActiveTextEditor(() =>
         provider.refresh()
     );
 }
