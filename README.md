@@ -29,12 +29,10 @@ Feel free to open an issue. I'll try my best to address it.
 3. Select "Run Extension"
 
 ### Todo
-- Panel items should link to the line number of the backlink within the document.
 - Expose settings
   - ignored files
 - Support traditional links (now, only wikilinks are supported)
 - By default, only activate for markdown files (?)
-- open link as new file (right now, behavior is to replace the current file)
 
 ## License
 © 2020 Binyamin Green and contributors, under the [MIT](https://github.com/b3u/vscode-backlinks-panel/blob/master/LICENSE.md) license.

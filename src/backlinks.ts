@@ -17,7 +17,12 @@ class Backlink extends vscode.TreeItem {
     get command(): vscode.Command {
         return {
             command: "vscode.open",
-            arguments: [this.uri],
+            arguments: [
+                this.uri,
+                {
+                    preview: true
+                }
+            ],
             title: "Open File",
         }
     }

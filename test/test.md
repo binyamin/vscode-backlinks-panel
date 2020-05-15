@@ -1,1 +1,1 @@
-- [[test2.md]] links here
+[[test2.md]] links here, and so does [[test3.md]].

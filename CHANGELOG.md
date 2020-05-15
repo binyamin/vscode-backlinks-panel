@@ -24,8 +24,8 @@ This file should contain all notable changes to the project. The format was insp
 - Introduce changelog
 
 ## Fixed
-- Fix bug where panel wouldn't update for side-by-side editors. (417419b55a45aed4936198f2b5496c97e91db0e9)
-
+- Fix bug where panel wouldn't update for side-by-side editors.
+- panel items now open in new editor
 ## [0.1.0] - 2020-05-13
 ### Added
 - List backlinks in side-panel
