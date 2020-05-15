@@ -3,6 +3,8 @@ import * as vscode from 'vscode';
 import * as fs from "fs";
 import * as path from "path";
 
+console.log(vscode.ThemeIcon.File)
+
 class Backlink extends vscode.TreeItem {
     constructor(
       public readonly label: string,
@@ -11,10 +13,8 @@ class Backlink extends vscode.TreeItem {
         super(label)
     }
 
-    get tooltip(): string {
-        return "Click to open"
-    }
-
+    iconPath: vscode.ThemeIcon = new vscode.ThemeIcon("link");
+    tooltip = "Click to open";
 
     get command(): vscode.Command {
         return {
