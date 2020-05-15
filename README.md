@@ -30,11 +30,13 @@ Feel free to open an issue. I'll try my best to address it.
 
 ### Todo
 - Panel items should link to the line number of the backlink within the document.
-- show icon for panel items (?)
 - Expose settings
   - ignored files
 - Support traditional links (now, only wikilinks are supported)
 - By default, only activate for markdown files (?)
+- open link in new tab (right now, behaviour is to replace the current file)
+- add changelog
+- bug: when editor has two groups open, it only looks at the first group for the current file.
 
 ## License
 © 2020 Binyamin Green and contributors, under the [MIT](https://github.com/b3u/vscode-backlinks-panel/blob/master/LICENSE.md) license.
