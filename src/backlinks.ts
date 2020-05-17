@@ -6,13 +6,25 @@ import * as path from "path";
 class Backlink extends vscode.TreeItem {
     constructor(
       public readonly label: string,
-      private uri: vscode.Uri
+      private uri: vscode.Uri,
+      private range: vscode.Range
     ) {
         super(label)
     }
 
-    iconPath: vscode.ThemeIcon = new vscode.ThemeIcon("link");
-    tooltip = "Click to open";
+    get iconPath(): vscode.ThemeIcon {
+        return new vscode.ThemeIcon("link");
+    }
+
+    get tooltip(): string {
+        return "Click to open " + this.label;
+    }
+
+    get description(): string {
+        const start = this.range.start;
+        const end = this.range.end;
+        return `Line ${start.line + 1}, Col ${start.character}:${end.character}`;
+    }
 
     get command(): vscode.Command {
         return {
@@ -20,7 +32,8 @@ class Backlink extends vscode.TreeItem {
             arguments: [
                 this.uri,
                 {
-                    preview: true
+                    preview: true,
+                    selection: this.range
                 }
             ],
             title: "Open File",
@@ -70,24 +83,49 @@ export class BacklinksProvider implements vscode.TreeDataProvider<Backlink>{
         const currentFilename = this.getCurrentFilename();
         if(!currentFilename) return Promise.resolve([]);
 
-        const mdFiles: string[] = this.getAllDocs(this.rootDir).filter(fn => fn.endsWith(".md"));
+        const mdFiles: string[] = this.getAllDocs(this.rootDir).filter(fn => fn.endsWith(".md") || fn.endsWith(".markdown"));
         
-        const backlinks: string[] = [];
+        const backlinks: {link: string; range: vscode.Range}[] = [];
+        
+        function getRange(match: string, source: string): vscode.Range[] {
+            const lines = source.split("\n").map(s => s.trim().toLowerCase());
+            const posArray: vscode.Range[]= [];
+            
+            lines.forEach((line, lineNum) => {
+                let startIndex = 0;
+                let endIndex = 0;
+                
+                while(startIndex > -1) {
+                    startIndex = line.indexOf(match.toLowerCase(), endIndex);
+                    endIndex = startIndex + match.length;
+                    if(startIndex < 0) break;
+                    
+                    posArray.push(new vscode.Range(
+                        new vscode.Position(lineNum, startIndex),
+                        new vscode.Position(lineNum, endIndex)
+                    ))
+                }
+            })
+            return posArray;
+        }
 
         for (const mdFile of mdFiles) {
             const contents = fs.readFileSync(path.join(this.rootDir, mdFile), {encoding: "utf-8"});
-
             const links = (contents.match(/(\[\[)(.*?)(\]\])/g) || []).map(l => path.parse(l.slice(2, -2)).base);
             if(links.includes(currentFilename)) {
-                backlinks.push(mdFile);
+                const ranges = getRange(currentFilename, contents);
+                ranges.forEach(range => {
+                    backlinks.push({link: mdFile, range});
+                })
             }
         }
         
         return Promise.resolve(
-            backlinks.map((link) =>
+            backlinks.map(({link, range}) =>
                 new Backlink(
                     link,
-                    vscode.Uri.file(path.join(this.rootDir, link))
+                    vscode.Uri.file(path.join(this.rootDir, link)),
+                    range
                 )
             )
         );

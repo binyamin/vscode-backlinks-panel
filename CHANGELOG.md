@@ -17,15 +17,18 @@ This file should contain all notable changes to the project. The format was insp
 - in case of vulnerabilities.
 -->
 
-## [Unreleased]
+## [0.2.0] - 2020-05-16
 ### Added
 - add icons to panel items
 - create dedicate folder for testing the extension
 - Introduce changelog
+- Panel items now link to word
+- Panel items display line/col in description
 
 ## Fixed
 - Fix bug where panel wouldn't update for side-by-side editors.
 - panel items now open in new editor
+- 
 ## [0.1.0] - 2020-05-13
 ### Added
 - List backlinks in side-panel
