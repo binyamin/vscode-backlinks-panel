@@ -16,6 +16,9 @@ This file should contain all notable changes to the project. The format was insp
 ### Security
 - in case of vulnerabilities.
 -->
+## [Unreleased]
+### Fixed
+- Locate files properly on Windows
 
 ## [0.2.0] - 2020-05-16
 ### Added
@@ -25,7 +28,7 @@ This file should contain all notable changes to the project. The format was insp
 - Panel items now link to word
 - Panel items display line/col in description
 
-## Fixed
+### Fixed
 - Fix bug where panel wouldn't update for side-by-side editors.
 - panel items now open in new editor
 - 

@@ -10,7 +10,7 @@ View all backlinks ([what?](https://github.com/b3u/vscode-backlinks-panel/#faq))
 > 👉 Inspired by [vscode-markdown-notes](https://github.com/kortina/vscode-markdown-notes/).
 
 ## Getting Started
-:exclamation: Currently, this extension depends on the [roam-style link extension](https://github.com/kortina/vscode-markdown-notes/) by [kortina](https://github.com/kortina). This will likely change in the future.
+*Currently, this extension depends on the [roam-style link extension](https://github.com/kortina/vscode-markdown-notes/) by [kortina](https://github.com/kortina). This may change.*
 1. [Install the extension](https://marketplace.visualstudio.com/items?itemName=BinyaminGreen.backlinks-panel) from the Visual Studio Marketplace.
 2. In VS Code, link to a file with a wikilink. (Eg. `Here's a link to [[example.md]]`)
 3. Open the file you just linked to. In the sidebar, there should be a "backlinks" pane which lists the original file.
@@ -19,7 +19,7 @@ View all backlinks ([what?](https://github.com/b3u/vscode-backlinks-panel/#faq))
 **What do you mean by backlinks?**\
 Documents in your workspace which link to the current file.
 
-**I don't see my issue listed here**\
+**I don't see my problem listed here**\
 Feel free to open an issue. I'll try my best to address it.
 
 ## Development
