@@ -51,7 +51,7 @@ export class BacklinksProvider implements vscode.TreeDataProvider<Backlink>{
 
     private get rootDir(): string {
         if(vscode.window.activeTextEditor) {
-            return path.parse(vscode.window.activeTextEditor.document.uri.path).dir;
+            return path.parse(vscode.window.activeTextEditor.document.uri.fsPath).dir;
         } else if(vscode.workspace.workspaceFolders) {
             return vscode.workspace.workspaceFolders[0].uri.path;
         } else {
@@ -59,29 +59,25 @@ export class BacklinksProvider implements vscode.TreeDataProvider<Backlink>{
         }
     }
 
+    private get currentFilename(): string {
+        const editor = vscode.window.activeTextEditor;
+        
+        if(editor) {
+            return path.relative(this.rootDir, editor.document.uri.fsPath);
+        } else {
+            return "";
+        }
+    }
+
+
     getTreeItem(element: Backlink): vscode.TreeItem {
         return element;
     }
 
     getChildren(_element?: Backlink): Thenable<Backlink[]> {
-        if(this.rootDir === "") {
-            vscode.window.showInformationMessage("No documents found");
+        if(this.rootDir === "" || this.currentFilename === "") {
             return Promise.resolve([]);
         }
-
-        /*
-            Steps
-            1. Get name of current_file
-            2. Get all (markdown) files
-            3. For each file,
-                a. Get content
-                b. Search content for links
-                c. If content links to current_file,
-                    i. Add file name to array;
-            4. Display relevant Filenames
-        */
-        const currentFilename = this.getCurrentFilename();
-        if(!currentFilename) return Promise.resolve([]);
 
         const mdFiles: string[] = this.getAllDocs(this.rootDir).filter(fn => fn.endsWith(".md") || fn.endsWith(".markdown"));
         
@@ -112,8 +108,8 @@ export class BacklinksProvider implements vscode.TreeDataProvider<Backlink>{
         for (const mdFile of mdFiles) {
             const contents = fs.readFileSync(path.join(this.rootDir, mdFile), {encoding: "utf-8"});
             const links = (contents.match(/(\[\[)(.*?)(\]\])/g) || []).map(l => path.parse(l.slice(2, -2)).base);
-            if(links.includes(currentFilename)) {
-                const ranges = getRange(currentFilename, contents);
+            if(links.includes(this.currentFilename)) {
+                const ranges = getRange(this.currentFilename, contents);
                 ranges.forEach(range => {
                     backlinks.push({link: mdFile, range});
                 })
@@ -129,14 +125,6 @@ export class BacklinksProvider implements vscode.TreeDataProvider<Backlink>{
                 )
             )
         );
-    }
-
-    private getCurrentFilename(): string | undefined {
-        const editor = vscode.window.activeTextEditor || null;
-        
-        if(editor) {
-            return path.relative(this.rootDir, editor.document.uri.path);
-        }
     }
 
     private getAllDocs(dir: string, fileList: string[] = []): string[] {
