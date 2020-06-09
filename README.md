@@ -7,10 +7,9 @@ View all backlinks ([what?](https://github.com/b3u/vscode-backlinks-panel/#faq))
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/BinyaminGreen.backlinks-panel?logo=visual-studio-code&logoColor=lightgrey&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=BinyaminGreen.backlinks-panel)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/b3u/vscode-backlinks-panel/CI?style=flat-square&logo=github&logoColor=lightgrey)
 
-> 👉 Inspired by [vscode-markdown-notes](https://github.com/kortina/vscode-markdown-notes/).
+> :warning: Currently, this extension depends on the [wikilink extension](https://github.com/kortina/vscode-markdown-notes/) by [kortina](https://github.com/kortina). This may change soon.
 
 ## Getting Started
-*Currently, this extension depends on the [roam-style link extension](https://github.com/kortina/vscode-markdown-notes/) by [kortina](https://github.com/kortina). This may change.*
 1. [Install the extension](https://marketplace.visualstudio.com/items?itemName=BinyaminGreen.backlinks-panel) from the Visual Studio Marketplace.
 2. In VS Code, link to a file with a wikilink. (Eg. `Here's a link to [[example.md]]`)
 3. Open the file you just linked to. In the sidebar, there should be a "backlinks" pane which lists the original file.
