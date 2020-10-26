@@ -7,7 +7,9 @@ View all backlinks ([what?](https://github.com/b3u/vscode-backlinks-panel/#faq))
 [![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/BinyaminGreen.backlinks-panel?logo=visual-studio-code&logoColor=lightgrey&style=flat-square)](https://marketplace.visualstudio.com/items?itemName=BinyaminGreen.backlinks-panel)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/b3u/vscode-backlinks-panel/CI?style=flat-square&logo=github&logoColor=lightgrey)
 
-> :warning: Currently, this extension depends on the [wikilink extension](https://github.com/kortina/vscode-markdown-notes/) by [kortina](https://github.com/kortina). This may change soon.
+> Note: I no longer use this extension. If you're interested in maintaining it, please open an issue
+
+_:warning: Currently, this extension depends on the [wikilink extension](https://github.com/kortina/vscode-markdown-notes/) by [kortina](https://github.com/kortina)._
 
 ## Getting Started
 1. [Install the extension](https://marketplace.visualstudio.com/items?itemName=BinyaminGreen.backlinks-panel) from the Visual Studio Marketplace.
