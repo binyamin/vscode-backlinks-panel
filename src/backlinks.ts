@@ -5,39 +5,33 @@ import * as path from "path";
 
 class Backlink extends vscode.TreeItem {
     constructor(
-      public readonly label: string,
-      private uri: vscode.Uri,
-      private range: vscode.Range
-    ) {
-        super(label)
-    }
-
-    get iconPath(): vscode.ThemeIcon {
-        return new vscode.ThemeIcon("link");
-    }
-
-    get tooltip(): string {
-        return "Click to open " + this.label;
-    }
-
-    get description(): string {
-        const start = this.range.start;
-        const end = this.range.end;
-        return `Line ${start.line + 1}, Cols ${start.character}:${end.character}`;
-    }
-
-    get command(): vscode.Command {
-        return {
-            command: "vscode.open",
-            arguments: [
-                this.uri,
-                {
-                    preview: true,
-                    selection: this.range
-                }
-            ],
-            title: "Open File",
+        public readonly label: string,
+        private uri: vscode.Uri,
+        private range: vscode.Range,
+      ) {
+          super(label)
+          
+          const start = this.range.start;
+          const end = this.range.end;
+          this.description = `Line ${start.line + 1}, Cols ${start.character}:${end.character}`;
         }
+        
+    description: string;
+
+    iconPath: vscode.ThemeIcon = new vscode.ThemeIcon("link");
+
+    tooltip: string = "Click to open " + this.label;
+
+    command: vscode.Command = {
+        command: "vscode.open",
+        arguments: [
+            this.uri,
+            {
+                preview: true,
+                selection: this.range
+            }
+        ],
+        title: "Open File",
     }
 }
 
@@ -121,7 +115,7 @@ export class BacklinksProvider implements vscode.TreeDataProvider<Backlink>{
                 new Backlink(
                     link,
                     vscode.Uri.file(path.join(this.rootDir, link)),
-                    range
+                    range,
                 )
             )
         );
