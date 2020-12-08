@@ -13,7 +13,7 @@ class Backlink extends vscode.TreeItem {
           
           const start = this.range.start;
           const end = this.range.end;
-          this.description = `Line ${start.line + 1}, Cols ${start.character}:${end.character}`;
+          this.description = `Ln ${start.line + 1}, Col ${start.character + 1} (${end.character - start.character} selected)`;
         }
         
     description: string;
