@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import * as vscode from 'vscode';
-import {BacklinksProvider} from './backlinks';
+import { BacklinksProvider } from './backlinks';
 
 
 export function activate(context: vscode.ExtensionContext): void {
