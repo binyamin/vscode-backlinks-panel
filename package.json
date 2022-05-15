@@ -57,7 +57,7 @@
     }
   },
   "engines": {
-    "vscode": "^1.45.0"
+    "vscode": "^1.67.1"
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",
@@ -79,12 +79,12 @@
   },
   "license": "SEE LICENSE IN LICENSE.md",
   "devDependencies": {
-    "@types/node": "^14.14.10",
-    "@types/vscode": "^1.51.0",
-    "@typescript-eslint/eslint-plugin": "^4.9.1",
-    "@typescript-eslint/parser": "^4.9.1",
-    "eslint": "^7.15.0",
-    "typescript": "^4.1.2",
-    "vscode-test": "^1.4.1"
+    "@types/node": "^16.11.35",
+    "@types/vscode": "^1.67.0",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
+    "eslint": "^8.15.0",
+    "typescript": "^4.6.4",
+    "vscode-test": "^1.6.1"
   }
 }
